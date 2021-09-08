@@ -38,11 +38,7 @@
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.2.9",
     "autoprefixer": "^9.8.6",
-    "msw": "^0.35.0",
     "postcss": "^7.0.36",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.9"
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }
