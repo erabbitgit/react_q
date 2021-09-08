@@ -88,7 +88,8 @@ const Login = () => {
               change={accountInput}
               placeholder='請輸入帳號'
               valid={accountVerify(account)}
-              touched={formTouch}
+              isTouched={formTouch}
+              required
             />
             <InputItem
               label='密碼'
@@ -96,7 +97,9 @@ const Login = () => {
               change={passwordInput}
               placeholder='請輸入密碼'
               valid={passwordVerify(password)}
-              touched={formTouch}
+              isTouched={formTouch}
+              visible
+              required
             />
             <button
               className="block text-center text-blue-600 p-3 duration-300 rounded-sm  hover:text-blue-300 w-3/12 m-auto"

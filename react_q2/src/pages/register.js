@@ -6,6 +6,7 @@ import Toast from '../components/toast'
 
 const Register = () => {
   const [account, setAccount] = useState('')
+  const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [checkPassword, setCheckPassword] = useState('')
   const [formTouch, setFormTouch] = useState(false)
@@ -17,6 +18,10 @@ const Register = () => {
 
   const accountInput = (value) => {
     setAccount(value)
+  }
+
+  const userNameInput = (value) => {
+    setUserName(value)
   }
 
   const passwordInput = (value) => {
@@ -38,6 +43,7 @@ const Register = () => {
       let params = {
         username: account,
         password: password,
+        name: userName,
       }
       try {
         const res = await axios.post('/api/register', params)
@@ -113,21 +119,33 @@ const Register = () => {
                        change={accountInput}
                        placeholder="請輸入信箱"
                        valid={accountVerify(account)}
-                       touched={formTouch}
+                       isTouched={formTouch}
+                       required
+            />
+            <InputItem label="使用者名稱"
+                       type="text"
+                       change={userNameInput}
+                       placeholder="請輸入使用者名稱"
+                       valid={{status: true, message:''}}
+                       isTouched={formTouch}
             />
             <InputItem label="密碼"
                        type="password"
                        change={passwordInput}
                        placeholder="4-8字元；首尾必須是英文；中間必須是數字"
                        valid={passwordVerify(password)}
-                       touched={formTouch}
+                       isTouched={formTouch}
+                       visible
+                       required
             />
             <InputItem label="確認密碼"
                        type="password"
                        change={doubleCheckInput}
                        placeholder="4-8字元；首尾必須是英文；中間必須是數字"
                        valid={confirmVerify(checkPassword)}
-                       touched={formTouch}
+                       isTouched={formTouch}
+                       visible
+                       required
             />
             <button
               className="block text-center text-blue-600 p-3 duration-300 rounded-sm  hover:text-blue-300 w-3/12 m-auto"
