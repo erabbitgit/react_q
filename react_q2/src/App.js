@@ -2,7 +2,7 @@ import './App.css'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Routers from '../src/router/router'
-import Layout from './components/layout'
+import Layout from './layout/layout'
 import axios from 'axios';
 
 let firstRender = false
