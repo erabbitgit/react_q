@@ -2,9 +2,10 @@ import './App.css'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Routers from '../src/router/router'
+import Layout from './components/layout'
 import axios from 'axios';
 
-let firstRender = true
+let firstRender = false
 
 function App () {
   const history = useHistory()
@@ -24,6 +25,7 @@ function App () {
 
   return (
     <div className="App">
+      <Layout />
       <Routers/>
     </div>
   )

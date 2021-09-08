@@ -46,9 +46,9 @@ const Register = () => {
         name: userName,
       }
       try {
-        const res = await axios.post('/api/register', params)
+        const res = await axios.post('https://l8-upgrade-apis.vercel.app/api/register', params)
         if(res.data.success){
-          const res = await axios.post('/api/login', params)
+          const res = await axios.post('https://l8-upgrade-apis.vercel.app/api/login', params)
           localStorage.setItem('token',res.data.token)
           history.push('/home')
         }
