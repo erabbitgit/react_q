@@ -1,28 +1,9 @@
 import './App.css'
-import { useEffect, Suspense } from 'react'
-import { useHistory } from 'react-router-dom'
-import Routers from '../src/router/router'
-import Layout from './layout/layout'
-import axios from 'axios';
-
-let firstRender = false
+import { Suspense } from 'react'
+import Routers from '@/router/router'
+import Layout from '@/layout/layout'
 
 function App () {
-  const history = useHistory()
-  useEffect(() => {
-    if(firstRender){
-      const token = localStorage.getItem('token')
-      axios.get('/api/authentication',{headers: {'AUTHENTICATION_TOKEN': token}}).then(res => {
-        if(res.data.success){
-          history.push('/home')
-        }
-      }).catch((error) =>{
-        history.push('/login')
-      })
-      firstRender = false
-    }
-  },[])
-
   return (
     <div className="App">
       <Layout />
