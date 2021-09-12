@@ -1,5 +1,5 @@
 import './App.css'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { useHistory } from 'react-router-dom'
 import Routers from '../src/router/router'
 import Layout from './layout/layout'
@@ -26,7 +26,9 @@ function App () {
   return (
     <div className="App">
       <Layout />
-      <Routers/>
+      <Suspense fallback={<></>}>
+        <Routers/>
+      </Suspense>
     </div>
   )
 }

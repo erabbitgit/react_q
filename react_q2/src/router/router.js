@@ -1,44 +1,38 @@
-import { Switch, Route, Link } from "react-router-dom";
-import Login from '../pages/login'
-import Register from '../pages/register'
-import Home from '../pages/home'
-import News from '../pages/news'
-import Error from '../pages/errorPage'
+import { lazy } from 'react'
+import { Switch, Route } from "react-router-dom";
 
 const routes = [
   {
     path: "/login",
-    component: Login
+    component: lazy(() => import(/* webpackChunkName: "login" */ '../pages/login')),
   },
   {
     path: "/register",
-    component: Register
+    component: lazy(() => import(/* webpackChunkName: "register" */ '../pages/register')),
   },
   {
     path: "/home",
-    component: Home
+    component: lazy(() => import(/* webpackChunkName: "home" */ '../pages/home')),
   },
   {
     path: "/news",
-    component: News
+    component: lazy(() => import(/* webpackChunkName: "news" */ '../pages/news')),
   },
   {
     path: "*",
-    component: Error
+    component: lazy(() => import(/* webpackChunkName: "errorPage" */ '../pages/errorPage')),
   },
 ]
 
 const Routers = () => {
-  return(
+  return (
     <>
       <Switch>
-        {routes.map((route, i) =>
+        {routes.map(({path, component}, index) =>
           <Route
-            key={i}
-            path={route.path}
-            render={props => (
-              <route.component {...props} routes={route.routes} />
-            )}
+            key={index}
+            path={path}
+            component={component}
           />
         )}
       </Switch>
