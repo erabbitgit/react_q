@@ -1,6 +1,6 @@
 const Toast = (obj) => {
   return (
-    <div className="flex items-center bg-white py-4 px-4 shadow-md rounded-full mb-2 m-auto w-1/6">
+    <div className="fixed left-1/2 transform -translate-x-1/2 flex items-center bg-white py-4 px-4 shadow-md rounded-full mt-2 m-auto">
       {obj.type === 'success' && (
         <>
           {/* Success icons */}

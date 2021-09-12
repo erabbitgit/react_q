@@ -1,8 +1,8 @@
 import {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useHistory, Link} from 'react-router-dom'
 import axios from 'axios'
-import InputItem from '../components/InputItem'
-import Toast from '../components/toast'
+import InputItem from '@/components/InputItem'
+import Toast from '@/components/Toast'
 
 const Register = () => {
   const [account, setAccount] = useState('')
@@ -32,11 +32,7 @@ const Register = () => {
     setCheckPassword(value)
   }
 
-  const goLogin = () => {
-    history.push('/login')
-  }
-
-  const submit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     setFormTouch(true)
     if (accountIsValid && passwordIsValid && checkPasswordIsValid) {
@@ -147,13 +143,13 @@ const Register = () => {
                        visible
                        required
             />
-            <button
+            <Link
               className="block text-center text-blue-600 p-3 duration-300 rounded-sm  hover:text-blue-300 w-3/12 m-auto"
-              onClick={goLogin}>返回登入
-            </button>
+              to='/login'>返回登入
+            </Link>
             <button
               className="block text-center text-white bg-blue-700 p-1 duration-300 rounded-md hover:bg-blue-500 w-1/5 m-auto"
-              onClick={submit}>註冊
+              onClick={onSubmit}>註冊
             </button>
           </form>
         </div>
