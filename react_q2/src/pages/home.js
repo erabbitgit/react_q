@@ -1,16 +1,16 @@
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import AuthorizationPage from "@/components/AuthorizationPage";
+
 const Home = () => {
-  const history = useHistory()
-  const goNews = () => {
-    history.push('/news')
-  }
-  return(
+  AuthorizationPage()
+  return (
     <>
-    <h1>Home Page</h1>
-      <button
+      <h1>Home Page</h1>
+      <Link
         className="block text-center text-blue-600 p-3 duration-300 rounded-sm  hover:text-blue-300 w-3/12 m-auto"
-        onClick={goNews}>最新消息
-      </button>
+        to='/news'>
+        最新消息
+      </Link>
     </>
   )
 }
