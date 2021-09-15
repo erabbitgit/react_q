@@ -1,16 +1,17 @@
 import './App.css'
-import { Suspense } from 'react'
+import {Suspense} from 'react'
 import Routers from '@/router/router'
-import Layout from '@/layout/layout'
+import {LoginAuthProvider} from '@/store/loginAuth-context'
 
-function App () {
+function App() {
   return (
-    <div className="App">
-      <Layout />
-      <Suspense fallback={<></>}>
-        <Routers/>
-      </Suspense>
-    </div>
+    <LoginAuthProvider>
+      <div className="App">
+        <Suspense fallback={<>載入中...</>}>
+          <Routers/>
+        </Suspense>
+      </div>
+    </LoginAuthProvider>
   )
 }
 

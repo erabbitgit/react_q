@@ -1,12 +1,13 @@
 import InputItem from '@/components/InputItem'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import ReactDOM from "react-dom";
 import { useHistory, Link } from 'react-router-dom'
 import axios from 'axios'
 import Toast from "@/components/Toast";
-
+import LoginAuthContext from '@/store/loginAuth-context'
 
 const Login = () => {
+  const { isAuth, setIsLogin, setToken, loginAuth, localStorageToken } = useContext(LoginAuthContext)
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
   const [formTouch, setFormTouch] = useState(false)
@@ -34,8 +35,9 @@ const Login = () => {
       try {
         const res = await axios.post('https://l8-upgrade-apis.vercel.app/api/login', params)
         if (res.data.success) {
-          localStorage.setItem('token', res.data.token)
-          history.push('/home')
+          setIsLogin(true)
+          loginAuth(res.data.token)
+          isAuth ? history.push('/home') : history.push('/login')
         }
       } catch (error) {
         setAlert({show: true, msg: error.response.data.message, type: 'error'})

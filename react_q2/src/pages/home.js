@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom'
-import AuthorizationPage from "@/components/AuthorizationPage";
+import {useContext} from 'react'
+import {Link} from 'react-router-dom'
+import LoginAuthContext from '@/store/loginAuth-context'
 
 const Home = () => {
-  AuthorizationPage()
+  const {isAuth, loginAuth} = useContext(LoginAuthContext)
+  if(!isAuth) return loginAuth()
   return (
     <>
       <h1>Home Page</h1>
