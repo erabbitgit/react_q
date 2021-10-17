@@ -22,7 +22,7 @@ export const LoginAuthProvider = props => {
       localStorage.setItem('token', token)
       headerToken = token;
     }
-    axios.get('https://l8-upgrade-apis.vercel.app/api/user', {headers: {'Authorization': `Bearer ${headerToken}`}})
+    axios.get('https://l8-upgrade-apis.herokuapp.com/api/user', {headers: {'Authorization': `Bearer ${headerToken}`}})
       .then(res => {
         if (res.data.success) {
           setIsAuth(true)

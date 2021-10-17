@@ -33,7 +33,7 @@ const Login = () => {
         password: password
       }
       try {
-        const res = await axios.post('https://l8-upgrade-apis.vercel.app/api/login', params)
+        const res = await axios.post('https://l8-upgrade-apis.herokuapp.com/api/login', params)
         if (res.data.success) {
           setIsLogin(true)
           loginAuth(res.data.token)
