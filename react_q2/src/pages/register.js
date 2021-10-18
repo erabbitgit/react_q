@@ -3,6 +3,7 @@ import {useHistory, Link} from 'react-router-dom'
 import axios from 'axios'
 import InputItem from '@/components/InputItem'
 import Toast from '@/components/Toast'
+import ReactDOM from "react-dom";
 
 const Register = () => {
   const [account, setAccount] = useState('')
@@ -105,7 +106,7 @@ const Register = () => {
 
   return (
     <>
-      {alert.show && <Toast type={alert.type} message={alert.msg} />}
+      {alert.show && ReactDOM.createPortal(<Toast type={alert.type} message={alert.msg} />, document.getElementById('modal-root'))}
       <div className="bg-white lg:w-5/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
         <div className="py-8 px-8 rounded-xl flex flex-col">
           <h1 className="font-medium text-2xl mt-3 text-center">註冊</h1>

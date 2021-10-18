@@ -37,6 +37,7 @@ const Login = () => {
         if (res.data.success) {
           setIsLogin(true)
           loginAuth(res.data.token)
+          localStorage.setItem('account', params.username)
           isAuth ? history.push('/home') : history.push('/login')
         }
       } catch (error) {

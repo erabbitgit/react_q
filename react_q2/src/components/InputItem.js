@@ -54,7 +54,7 @@ const InputItem = props => {
                placeholder={placeholder}
                onChange={handleInput}
                onBlur={inputTouched}
-               className={`${inputIsInvalid ? 'border-red-500':'' } inline-block rounded-sm px-4 py-3 border-2 border-gray-300 w-4/5 focus:outline-none`}/>
+               className={`${inputIsInvalid ? 'border-red-500':'' } inline-block rounded-sm px-4 py-3 border-2 border-gray-300 w-4/5 focus:outline-none rounded-md`}/>
         {visible && (
           <div>
             <EyeOpen handleShow={handleShow} show={show} />
